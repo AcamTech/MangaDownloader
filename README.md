@@ -37,4 +37,4 @@ new MangaDownloader\MangaDownloader('<url>');
 
 Download process will start automatically. Once finished the program will try to zip it running the exec() function. I used this because at this moment I do not have the PHP Zip library installed and I've been putting it off becuase I have to recompile PHP. But I will add it in the future (I know exec isn't the best of options, but I made this to run it in my virtual machine server).
 
-Make sure you have zip installed in your Linux system (yes, no Windows for now, though I haven't tested it any of the *AMP systms).
+Make sure you have zip installed in your Linux system (yes, no Windows for now, though I haven't tested it any of the *AMP systems).
