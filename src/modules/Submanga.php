@@ -1,6 +1,6 @@
 <?php
 /**
- * Batoto Module
+ * Submanga Module
  *
  * @author Rogelio Morey
  * @nickname SparoHawk
@@ -11,14 +11,14 @@
 
 namespace MangaDownloader\modules;
 
-class Batoto extends \MangaDownloader\MangaDownloader
+class Submanga extends \MangaDownloader\MangaDownloader
 {
     /**
      * @var string
      *
      * The name of the module.
      */
-    public $moduleName = 'batoto';
+    public $moduleName = 'submanga';
     
     /**
      * @var string
@@ -39,14 +39,14 @@ class Batoto extends \MangaDownloader\MangaDownloader
      *
      * Container containing the list of pages we need.
      */
-    public $pageListContainer = '<select name="page_select" id="page_select"';
+    public $pageListContainer = '<select onchange';
     
     /**
      * @var string
      *
      * Regular expression used to extract the RAW HTML for the page listing.
      */
-    public $pageListContainerRegex = '#<select[^>]*id="page_select"[^>]*>(.*?)</select>#is';
+    public $pageListContainerRegex = '#<select[^>]*onchange[^>]*>(.*?)</select>#is';
     
     /**
      * @var string
@@ -60,7 +60,7 @@ class Batoto extends \MangaDownloader\MangaDownloader
      *
      * Regular expression for getting the image URL.
      */
-    public $imageUrlRegex = '#<img[^>]*id="comic_page"[^>]*src="(.+?)"[^>]*>#i';
+    public $imageUrlRegex = '#<img[^>]*src="(http[^"]*)"[^>]*>#i';
 
     /**
      * Initialize the process to download a manga from Mangareader
@@ -72,18 +72,20 @@ class Batoto extends \MangaDownloader\MangaDownloader
     public function __construct($url)
     {
         // Set module variables.
-        $this->moduleDomain = $this->moduleName . '.net';
-        $this->moduleUrl = 'http://www.' . $this->moduleDomain;
+        $this->moduleDomain = $this->moduleName . '.com';
+        $this->moduleUrl = 'http://' . $this->moduleDomain;
         $this->url = $url;
         
         //Regex strign used to validate the URL. We want a particular structure. Modified whenever it is needed.
-        $urlRegexTest = '#http://www\.'. str_replace('.', '\.', $this->moduleDomain) .'/read/_/[0-9]+/([a-z0-9-]+)(?:_v[0-9]+)?_ch([0-9]+)[^/]*(?:/[0-9]+)?/?#i';
+        $urlRegexTest = '#http://'. str_replace('.', '\.', $this->moduleDomain) .'/(c)/([0-9]+)(?:/[0-9]+)?#i';
         // Test that the url complies with the curent format.
         $this->testUrl($urlRegexTest);
         // Test that the webpage works and/or exists.
         $this->checkUrlHttpStatus();
         // So far so good. Start the download process.
         $this->getContent($url);
+        // Submanga has wierd stuff.
+        $this->getFileInfo();
         // Further checking to ensure correct HTML.
         $this->checkForPageList();
         // Get that page listing HTML.
@@ -107,6 +109,21 @@ class Batoto extends \MangaDownloader\MangaDownloader
      */
     public function getUrl($page)
     {
-        return $this->addTrailingSlash($page);
+        return 'http://submanga.com/c/214093/' . $page;
+    }
+    
+    /**
+     * getFileInfo
+     *
+     * Functio to get information from submanga, since they don't provide any through the URL.
+     *
+     * @return void
+     */
+    public function getFileInfo()
+    {
+        preg_match('#<a[^>]*href="\./([^/]*)/([0-9]+)/[0-9]+">\2</a>#i', $this->content, $fileParts);
+        
+        $this->seriesName = $fileParts[1];
+        $this->chapterNumber = $fileParts[2];
     }
 }

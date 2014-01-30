@@ -37,7 +37,8 @@ class MangaDownloader
         'mangafox',
         'mangabird',
         'onemanga',
-        'batoto'
+        'batoto',
+        'submanga'
     ];
     
     /**
