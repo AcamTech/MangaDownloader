@@ -5,7 +5,7 @@
  * @author Rogelio Morey
  * @nickname SparoHawk
  * @created 2014-01-22
- * @version 0.1.0 alpha
+ * @version 0.1.1 beta
  * @contact sparohawk@gmail.com
  */
 
@@ -121,9 +121,10 @@ class Submanga extends \MangaDownloader\MangaDownloader
      */
     public function getFileInfo()
     {
-        preg_match('#<a[^>]*href="\./([^/]*)/([0-9]+)/[0-9]+">\2</a>#i', $this->content, $fileParts);
+        preg_match('#<a[^>]*href="\./([^/]*)/([a-z0-9]+)/[0-9]+">\2</a>#i', $this->content, $fileParts);
         
         $this->seriesName = $fileParts[1];
         $this->chapterNumber = $fileParts[2];
+        print_r($this);die();
     }
 }

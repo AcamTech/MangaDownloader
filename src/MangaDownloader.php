@@ -5,7 +5,7 @@
  * @author Rogelio Morey
  * @nickname SparoHawk
  * @created 2014-01-22
- * @version 0.1.0 beta
+ * @version 0.1.1 beta
  * @contact sparohawk@gmail.com
  *
  * The purpose of this script is to download full chapters from the following manga hosting websites:
