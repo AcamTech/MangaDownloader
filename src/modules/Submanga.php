@@ -84,6 +84,8 @@ class Submanga extends \MangaDownloader\MangaDownloader
         $this->checkUrlHttpStatus();
         // So far so good. Start the download process.
         $this->getContent($url);
+        // Fix Url
+        $this->fixUrl();
         // Submanga has wierd stuff.
         $this->getFileInfo();
         // Further checking to ensure correct HTML.
@@ -109,7 +111,21 @@ class Submanga extends \MangaDownloader\MangaDownloader
      */
     public function getUrl($page)
     {
-        return 'http://submanga.com/c/214093/' . $page;
+        return $this->url . '/' . $page;
+    }
+    
+    /**
+     * fixUrl
+     *
+     * Have to make url from provided URL, no other way.
+     *
+     * @return void
+     */
+    public function fixUrl()
+    {
+        preg_match('#^(' . str_replace('.', '\.', $this->moduleUrl) . '/c/[0-9]+)#', $this->url, $url);
+        
+        $this->url = $url[1];
     }
     
     /**
@@ -125,6 +141,5 @@ class Submanga extends \MangaDownloader\MangaDownloader
         
         $this->seriesName = $fileParts[1];
         $this->chapterNumber = $fileParts[2];
-        print_r($this);die();
     }
 }
