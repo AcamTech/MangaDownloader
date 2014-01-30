@@ -13,18 +13,18 @@ It's written in PHP, I know. I'll work on porting it to another better suited la
 Currently only downloads specific chapters.
 
 
-### Current Sources
+### Current sources
 * Mangareader.net
 * Mangabird.com
 * Onemanga.me
 
 
-### To Do
+### To do
 1. Make it so that a whole manga can be specified instead of only a chapter.
 2. Add support for PHP Zip library.
 
 
-### How to Use
+### How to use
 It's simple. Download or clone the program/repository.
 
 You can run it from your shell using the script.php file:
@@ -51,18 +51,18 @@ Sé que está escrito en PHP. Luego lo portaré a otro lenguaje más adecuado, p
 Actualmente solo se pueden descargar capítulos individuales.
 
 
-### Sitios Soportados
+### Sitios soportados
 * Mangareader.net
 * Mangabird.com
 * Onemanga.me
 
 
-### To Do
+### Por hacer
 1. Hacer que se puedan descargar mangas completos en vez de capítulos individuales.
 2. Añadir soporte para la librería de Zip de PHP.
 
 
-### Como se Usa
+### Como se usa
 Es sencillo. Descarga o clona el programa/repositorio.
 
 Puedes correrlo desde la línea de comando utilizando el archivo script.php:
