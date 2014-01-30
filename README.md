@@ -19,6 +19,7 @@ Currently only downloads specific chapters.
 * Onemanga.me
 * Batoto.net
 * Submanga.com
+* E-hentai.org
 
 
 ### To do
@@ -59,6 +60,7 @@ Actualmente solo se pueden descargar capítulos individuales.
 * Onemanga.me
 * Batoto.net
 * Submanga.com
+* E-hentai.org
 
 
 ### Por hacer

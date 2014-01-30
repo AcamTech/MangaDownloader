@@ -38,7 +38,8 @@ class MangaDownloader
         'mangabird',
         'onemanga',
         'batoto',
-        'submanga'
+        'submanga',
+        'ehentai'
     ];
     
     /**
@@ -105,7 +106,9 @@ class MangaDownloader
             // Extract the domain for
             // NOTE: For now we don't need the ending part of the domain.
             preg_match('#http://(?:[a-z0-9-]+\.)?([a-z0-9-]+)\.[a-z]{2,3}(?:\.[a-z]{2})?#', $url, $domain);
-
+            
+            // Replace dashes
+            $domain[1] = str_replace('-', '', $domain[1]);
             // Check that it is a supported domain
             if(in_array($domain[1], $this->sites))
             {
