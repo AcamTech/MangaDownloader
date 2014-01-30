@@ -57,6 +57,8 @@ Actualmente solo se pueden descargar capítulos individuales.
 * Mangareader.net
 * Mangabird.com
 * Onemanga.me
+* Batoto.net
+* Submanga.com
 
 
 ### Por hacer
