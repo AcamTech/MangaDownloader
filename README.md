@@ -17,6 +17,7 @@ Currently only downloads specific chapters.
 * Mangareader.net
 * Mangabird.com
 * Onemanga.me
+* Batoto.net
 
 
 ### To do

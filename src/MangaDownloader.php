@@ -5,7 +5,7 @@
  * @author Rogelio Morey
  * @nickname SparoHawk
  * @created 2014-01-22
- * @version 0.1.0 alpha
+ * @version 0.1.0 beta
  * @contact sparohawk@gmail.com
  *
  * The purpose of this script is to download full chapters from the following manga hosting websites:
@@ -13,6 +13,7 @@
  *     - Mangastream.com
  *     - Mangafox.me
  *     - Mangabird.com
+ *     - Onemanga.me
  *
  * To the corresponding site admins:
  *     I'd allow you to message me to remove your site from the list, but I won't.
@@ -35,7 +36,8 @@ class MangaDownloader
         'mangastream',
         'mangafox',
         'mangabird',
-        'onemanga'
+        'onemanga',
+        'batoto'
     ];
     
     /**
@@ -272,5 +274,20 @@ class MangaDownloader
         preg_match($this->imageUrlRegex, $this->content, $urls);
         
         return $urls[1];
+    }
+    
+    /**
+     * addTrailingSlash
+     *
+     * Some sites require the trailing slash in order to allow a proper page download (looking at you Batoto ¬¬).
+     *
+     * @param string $url
+     */
+    public function addTrailingSlash($url)
+    {
+        if(substr($url, -1) != '/')
+            $url .= '/';
+        
+        return $url;
     }
 }
